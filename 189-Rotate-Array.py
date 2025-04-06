@@ -48,6 +48,9 @@ def solution(A, K):
 
     return A[-K:] + A[:-K]
 
+# -K: the last K elements
+# :-K everything except the last K elements
+
 
 print(solution([1,2,3,4,5,6,7], 3))
 
