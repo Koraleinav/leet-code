@@ -29,3 +29,28 @@ N is an odd integer within the range [1..1,000,000];
 each element of array A is an integer within the range [1..1,000,000,000];
 all but one of the values in A occur an even number of times.
 """
+
+
+def findDuplicates(nums):
+    duplicates_dict = {}
+    for digit in nums:
+        if not duplicates_dict.get(digit):
+            duplicates_dict[digit] = 1
+        else:
+            duplicates_dict[digit] += 1
+        
+    for k, v in duplicates_dict.items():
+        if v == 1:
+            return k
+
+
+print(findDuplicates([4,4,5,7,7,9,5]))
+
+
+# more efficient way : 
+def solution(A):
+    result = 0
+    for num in A:
+        result ^= num  # XOR each number
+    return result
+    
