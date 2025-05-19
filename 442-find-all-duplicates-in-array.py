@@ -31,7 +31,7 @@ all but one of the values in A occur an even number of times.
 """
 
 
-def findDuplicates(nums):
+def findDuplicates1(nums):
     duplicates_dict = {}
     for digit in nums:
         if not duplicates_dict.get(digit):
@@ -44,7 +44,6 @@ def findDuplicates(nums):
             return k
 
 
-print(findDuplicates([4,4,5,7,7,9,5]))
 
 
 # more efficient way : 
@@ -54,3 +53,27 @@ def solution(A):
         result ^= num  # XOR each number
     return result
     
+
+
+
+
+
+
+def findDuplicates(nums):
+    duplicates_dict = {}
+    new_arr = []
+    for num in nums:
+        if duplicates_dict.get(num):
+            duplicates_dict[num] += 1
+        else:
+            duplicates_dict[num] = 1
+
+    for k, val in duplicates_dict.items():
+        if val == 2:
+            new_arr.append(k)
+
+    return new_arr
+
+
+print(findDuplicates([4,4,5,7,7,9,5]))
+print(findDuplicates([4,4,4,5,7,7,9,5]))
